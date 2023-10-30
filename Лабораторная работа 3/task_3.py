@@ -1,18 +1,17 @@
 def count_letters(text: str):
     text = text.lower()
-    keys = []
+    dictionary_of_letters = dict()
     for i in text:
         if i.isalpha():
-            keys.append(i)
-    dictionary_of_letters = dict.fromkeys(keys, 0)
-    for i in text:
-        if i.isalpha():
-            dictionary_of_letters[i] += 1
+            if i in dictionary_of_letters.keys():
+                dictionary_of_letters[i] += 1
+            else:
+                dictionary_of_letters[i] = 1
     return dictionary_of_letters
 
 
 def calculate_frequency(dictionary_of_letters):
-    count_of_letters = sum(i for i in dictionary_of_letters.values())
+    count_of_letters = sum(dictionary_of_letters.values())
     for i in dictionary_of_letters:
         dictionary_of_letters[i] /= count_of_letters
     return dictionary_of_letters
